@@ -1,0 +1,23 @@
+domain_data.list:
+  path: '/admin/config/domain/domain-data/domain-data-list'
+  defaults:
+    _title: 'Domain Data List'
+    _form: '\Drupal\domain_data\Form\DomainData'
+  requirements:
+    _permission: 'access content'
+
+domain_data.default:
+  path: '/domain-data/example'
+  defaults:
+    _title: 'Example'
+    _controller: '\Drupal\domain_data\Controller\DomainDataController::build'
+  requirements:
+    _permission: 'access content'
+
+domain_data.page:
+  path: '/admin/config/domain/domain-data'
+  defaults:
+    _title: 'Domain Data'
+    _form: '\Drupal\domain_data\Form\DomainData'
+  requirements:
+    _permission: 'access content'

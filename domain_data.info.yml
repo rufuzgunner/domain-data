@@ -1,0 +1,10 @@
+name: Domain Data
+type: module
+description: Domain data info
+package: Custom
+core: 8.x
+lifecycle: experimental
+core_version_requirement: ^8 || ^9
+dependencies:
+  - domain:domain
+  - element_multiple:element_multiple

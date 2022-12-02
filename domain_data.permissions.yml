@@ -1,0 +1,4 @@
+administer domain_data configuration:
+  title: 'Administer domain_data configuration'
+  description: 'Optional description.'
+  restrict access: true

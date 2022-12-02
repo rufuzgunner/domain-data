@@ -1,0 +1,6 @@
+domain_custom.admin:
+  title: 'Domain Data'
+  description: ''
+  parent: domain.admin
+  route_name: domain_data.page
+  weight: 100

@@ -1,0 +1,12 @@
+domain_data.list:
+  title: Domain Data List
+  route_name: domain_data.list
+  base_route: domain_data.list
+domain_data.page:
+  title: Domain Data Add
+  route_name: domain_data.page
+  base_route: domain_data.list
+domain_data.default:
+  title: Domain Default Data
+  route_name: domain_data.default
+  base_route: domain_data.list
