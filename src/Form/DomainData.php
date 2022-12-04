@@ -12,28 +12,6 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Url;
 use Drupal\Core\Routing;
 
-$storage = \Drupal::entityTypeManager()->getStorage('domain');
-$domains = $storage->loadMultiple();
-
-$domains_all = [];
-
-foreach ($domains as $domain) {
-
-  $did = $domain->get('id');
-
-  $table = 'domain.config.'.$did.'.nebonew.settings';
-
-  $domainConfig = \Drupal::config($table);
-
-  $datas[$did]['hostname'] = $domain->getHostname();
-  $datas[$did]['name'] = $domain->get('name');
-  $datas[$did]['path'] = $domain->get('path');
-
-  if(substr($datas[$did]['path'], -1) == '/') {
-    $domain_url = substr($datas[$did]['path'], 0, -1);
-  }
-  $domains_all[] = $domain_url;
-}
 
 class DomainData extends FormBase {
 	/**
@@ -52,10 +30,37 @@ class DomainData extends FormBase {
 			'#markup' => '<h4>Добавьте кастомные значения для домена</h4><br>',
 		);
 
+		/*var_dump();*/
+		function domain_list() {
+				$storage = \Drupal::entityTypeManager()->getStorage('domain');
+				$domains = $storage->loadMultiple();
+
+		    $domains_all = [];
+
+				foreach ($domains as $domain) {
+
+					  $did = $domain->get('id');
+
+					  $table = 'domain.config.'.$did.'.nebonew.settings';
+
+					  $domainConfig = \Drupal::config($table);
+
+					  $datas[$did]['hostname'] = $domain->getHostname();
+					  $datas[$did]['name'] = $domain->get('name');
+					  $datas[$did]['path'] = $domain->get('path');
+
+					  if(substr($datas[$did]['path'], -1) == '/') {
+					    $domain_url = substr($datas[$did]['path'], 0, -1);
+					  }
+					  $domains_all[] = $domain_url;
+				}
+				return $domains_all;
+		}
+
 		$form['domain'] = array(
 			'#type' => 'select',
 			'#title' => t('Выберите домен'),
-			'#options' => [1, 2, 3],
+			'#options' => domain_list(),
 			'#required' => TRUE,
 		);
 
